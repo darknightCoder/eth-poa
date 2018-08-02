@@ -21,7 +21,7 @@ fi
 
 function make_account() {
 	mkdir -p /tmp/clique/make_account
-	ADDRESS=`geth account new --keystore /tmp/clique/make_account --password $DEFAULT_PASSWORD >/dev/null | sed 's/Address: {\([A-Fa-f0-9]*\)}/\1/'`
+	ADDRESS=`geth account new --keystore /tmp/clique/make_account --password <(echo $DEFAULT_PASSWORD) >/dev/null | sed 's/Address: {\([A-Fa-f0-9]*\)}/\1/'`
 	echo 0x$ADDRESS >> $CBROOT/accounts
 	echo  $DEFAULT_PASSWORD >> $CBROOT/account-passwords
 	mv /tmp/clique/make_account/* $CBROOT/keystore
